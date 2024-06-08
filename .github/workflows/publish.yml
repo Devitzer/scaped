@@ -28,7 +28,6 @@ jobs:
               id: tag_version
               with:
                 tag: "v${{ steps.package-version.outputs.current-version }}"
-                github_token: ${{secrets.PAT}}
                 ## CREATE GITHUB RELEASE ##
             - name: Create GitHub release v${{steps.package-version.outputs.current-version}}
               uses: ncipollo/release-action@v1
@@ -38,7 +37,6 @@ jobs:
                 body: |
                     ## Release Notes
                     ${{ steps.extract-release-notes.outputs.release_notes }}
-                token: ${{secrets.PAT}}
             - name: Publish
               run: npm publish --provenance --access public
               working-directory: ./
