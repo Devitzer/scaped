@@ -5,3 +5,7 @@
 The changelog!
 Experiment with Github Actions
 Experiment with type declarations (for TypeScript plugins)
+
+## Fixed
+
+Incorrect registry link in Github Actions
