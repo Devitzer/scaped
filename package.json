@@ -6,7 +6,10 @@
   "bin": {
     "scaped": "dist/cli.js"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Devitzer/scaped.git"
+  },
   "scripts": {
     "hardbuild": "rimraf dist && npx tsc"
   },
