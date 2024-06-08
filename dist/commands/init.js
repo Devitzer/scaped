@@ -58,8 +58,8 @@ const init = {
         const initTime = Date.now();
         try {
             if (lang == "JavaScript") {
-                const JSTemplate = path.dirname(require.resolve("@scaped/javascript-plugin/package.json"));
-                const TemplatePath = path.join(JSTemplate, "plugin");
+                const JSTemplate = path.join(__dirname, "..", "..", "node_modules", "@scaped", "javascript-plugin", "package.json");
+                const TemplatePath = path.join(JSTemplate, "../plugin");
                 let PluginPath;
                 // check if user specified a directory, if no initialize it in current directory
                 if (args._[2]) {

@@ -27,8 +27,8 @@ const init: CommandInterface = {
 
         try {
             if (lang == "JavaScript") {
-                const JSTemplate = path.dirname(require.resolve("@scaped/javascript-plugin/package.json"));
-                const TemplatePath = path.join(JSTemplate, "plugin");
+                const JSTemplate = path.join(__dirname, "..", "..", "node_modules", "@scaped", "javascript-plugin", "package.json");
+                const TemplatePath = path.join(JSTemplate, "../plugin");
                 let PluginPath: string;
 
                 // check if user specified a directory, if no initialize it in current directory

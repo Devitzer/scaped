@@ -1,3 +1,9 @@
+# v0.1.4 (2024-06-08)
+
+## Bug Fixes
+
+- Fixed use of the init command globally.
+
 # v0.1.3 (2024-06-08)
 
 **NOTE: THIS UPDATE DOES NOT AFFECT THE NPM PACKAGE IN ANY WAY, INSTALLING IT IS NOT NECESSARY**
