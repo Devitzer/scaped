@@ -1,4 +1,4 @@
-name: "publish npm"
+name: "NPM Publish"
 
 on: push
 
@@ -6,15 +6,30 @@ jobs:
     publish:
         runs-on: ubuntu-latest
         steps:
-            - name: checkout
+            - name: Checkout
               uses: actions/checkout@v4
-            - name: node
+            - name: Node
               uses: actions/setup-node@v4
               with:
                 node-version: 22
                 registry-url: https://registry.npmjs.org
-            - name: publish
-              run: npm publish --access public
+            - run: npm ci
+            - name: Get NPM version
+              id: package-version
+              uses: martinbeentjes/npm-get-version-action@main
+            - name: Extract release notes
+              id: extract-release-notes
+              uses: ffurrer2/extract-release-notes@v2
+            - name: Create GitHub release v${{steps.package-version.outputs.current-version}}
+              uses: ncipollo/release-action@v1
+              with: 
+                tag: "v${{steps.package-version.outputs.current-version}}"
+                name: "Scaped | v${{steps.package-version.outputs.current-version}}"
+                body: |
+                    ## Release Notes
+                    ${{ steps.extract-release-notes.outputs.release_notes }}
+            - name: Publish
+              run: npm publish --provenance --access public
               working-directory: ./
               env:
                 NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}

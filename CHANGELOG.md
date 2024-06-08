@@ -1,3 +1,9 @@
+# 0.1.1
+
+## Fixed
+
+Final test with Github Actions
+
 # 0.1.0
 
 ## Added
