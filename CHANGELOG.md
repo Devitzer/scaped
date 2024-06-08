@@ -1,3 +1,11 @@
+# v0.1.3 (2024-06-08)
+
+**NOTE: THIS UPDATE DOES NOT AFFECT THE NPM PACKAGE IN ANY WAY, INSTALLING IT IS NOT NECESSARY**
+
+## Bug Fixes
+
+- Made it so that the Github Workflow will not activate on tag creation, because I don't want it to.
+
 # v0.1.2 (2024-06-08)
 
 ## Added
