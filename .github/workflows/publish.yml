@@ -17,29 +17,7 @@ jobs:
                 node-version: 22
                 registry-url: https://registry.npmjs.org
             - run: npm ci
-            ## GET PACKAGE.JSON VERSION ##
-            - name: Get NPM version
-              id: package-version
-              uses: martinbeentjes/npm-get-version-action@main
-              ## GET CHANGELOG NOTES ##
-            - name: Extract release notes
-              id: extract-release-notes
-              uses: ffurrer2/extract-release-notes@v2
-              ## CREATE GITHUB TAG RELEASE ##
-            - name: "Push tag v${{ steps.package-version.outputs.current-version }}"
-              uses: rickstaa/action-create-tag@v1
-              id: tag_version
-              with:
-                tag: "v${{ steps.package-version.outputs.current-version }}"
-                ## CREATE GITHUB RELEASE ##
-            - name: Create GitHub release v${{steps.package-version.outputs.current-version}}
-              uses: ncipollo/release-action@v1
-              with: 
-                tag: "v${{steps.package-version.outputs.current-version}}"
-                name: "Scaped | v${{steps.package-version.outputs.current-version}}"
-                body: |
-                    ## Release Notes
-                    ${{ steps.extract-release-notes.outputs.release_notes }}
+            ## PUBLISH PACKAGE ##
             - name: Publish
               run: npm publish --provenance --access public
               working-directory: ./

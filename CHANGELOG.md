@@ -2,7 +2,7 @@
 
 ## Bug Fixes
 
-Final test with Github Actions (10th test)
+Final tests with Github Actions (11 tests)
 
 # 0.1.0
 
