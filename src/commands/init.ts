@@ -27,8 +27,7 @@ const init: CommandInterface = {
 
         try {
             if (lang == "JavaScript") {
-                const JSTemplate = path.join(__dirname, "..", "..", "node_modules", "@scaped", "javascript-plugin", "package.json");
-                const TemplatePath = path.join(JSTemplate, "../plugin");
+                const TemplatePath = path.join(__dirname, "..", "..", "plugin-templates", "javascript-template");
                 let PluginPath: string;
 
                 // check if user specified a directory, if no initialize it in current directory
@@ -54,11 +53,12 @@ const init: CommandInterface = {
     author: "put-your-name-here",
     lang: "javascript" // This shouldn't be necessary to change unless you are converting your plugin from one to another.
 }
+
 // don't change the default export, name of the default export can be changed
 export default Config;`
                 await fse.writeFile(PluginPath + "/plugin.config.js", Config, "utf8");
 
-                Errors.scapedInfo("initializing an NPM package is good for making your plugin public, just make sure that the name is 'scaped-plugin-(your plugin name)'\n")
+                Errors.scapedInfo("initializing an NPM package is good for making your plugin public. do not remove the 'scaped-plugin-' prefix if you are.");
                 const InitNPM = await prompts({
                     type: "confirm",
                     name: "value",
@@ -67,13 +67,25 @@ export default Config;`
                 })
 
                 if (InitNPM.value) {
-                    console.log("NPM initialization in progress...");
-                    process.chdir(PluginPath);
-                    const stdout = await Terminal.asyncExecute("npm init -y");
-                    Errors.scapedInfo("NPM initialization done! you need to change the values manually.\n");
+                    const packagejson = `{
+  "name": "scaped-plugin-${args._[1]}",
+  "version": "1.0.0",
+  "main": "CommandsHolder.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "keywords": [],
+  "author": "put-your-npm-name-here",
+  "license": "ISC",
+  "description": ""
+}
+`
+                    console.log("\nNPM initialization in progress...");
+                    await fse.writeFile(PluginPath + "/package.json", packagejson, "utf8");
+                    Errors.scapedInfo("NPM initialization done!");
                 }
                 
-                console.log(ansiColors.blue("plugin creation complete!"))
+                console.log(ansiColors.blue("\nplugin creation complete!"))
                 const formattedTime = diagnosticFormat(Date.now() - initTime);
                 console.log(ansiColors.blue(`completed in ${formattedTime.time}${formattedTime.format}`));
             } else if (lang == "TypeScript") {

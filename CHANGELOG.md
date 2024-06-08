@@ -1,3 +1,13 @@
+# v0.2.0 (2024-06-08)
+
+## Changed
+
+- Init command, it should now work properly without issues.
+
+## Removed
+
+- shelljs, we weren't using it and it was causing unnecessary security vulnerabilities.
+
 # v0.1.4 (2024-06-08)
 
 ## Bug Fixes
