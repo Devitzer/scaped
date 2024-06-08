@@ -1,6 +1,6 @@
-# 0.1.1
+# 0.1.1 (2024-06-08)
 
-## Fixed
+## Bug Fixes
 
 Final test with Github Actions
 
