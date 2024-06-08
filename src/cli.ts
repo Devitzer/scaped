@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // !PACKAGES
 
 import yargs from "yargs";

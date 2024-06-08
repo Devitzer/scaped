@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 "use strict";
 // !PACKAGES
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {

@@ -1,10 +1,25 @@
-# 0.1.1 (2024-06-08)
+# v0.1.2 (2024-06-08)
+
+## Added
+- You can find the Scaped CLI version by running scaped -v or scaped --version.
+- Experimental type declarations for TypeScript plugins.
 
 ## Bug Fixes
 
-Final tests with Github Actions (11 tests)
+- Installing scaped as a CLI should work now (forgot to add a shebang line)
+- Small updates to our tsconfig.
+- All errors were converted to scaped errors.
+- Some adjustments to our init command.
+- Some adjustments to the changelog.
+- Fixes to the default commands handler.
 
-# 0.1.0
+# v0.1.1 (2024-06-08)
+
+## Bug Fixes
+
+Final tests with Github Actions (this took 11 tests)
+
+# v0.1.0
 
 ## Added
 
