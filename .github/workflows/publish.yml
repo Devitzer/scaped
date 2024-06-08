@@ -28,7 +28,7 @@ jobs:
                 body: |
                     ## Release Notes
                     ${{ steps.extract-release-notes.outputs.release_notes }}
-                token: ${{secrets.GITHUB_TOKEN}}
+                token: ${{secrets.PAT}}
             - name: Publish
               run: npm publish --provenance --access public
               working-directory: ./
