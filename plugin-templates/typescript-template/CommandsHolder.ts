@@ -1,8 +1,9 @@
 // This file is very easy to make.
 // Simply make an array that contains all of your exported commands.
 import command from "./commands/command";
+import { CommandInterface } from "scaped/types";
 
-const MyCommands = [
+const MyCommands: CommandInterface[] = [
     command
 ];
 

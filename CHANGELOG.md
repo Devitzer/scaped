@@ -1,3 +1,20 @@
+# v0.3.0 (2024-06-08)
+
+## Added
+
+- TypeScript plugins are now in their experimental stage. They may not function properly.
+- You can initialize TypeScript plugins now. (scaped init myPlugin --typescript)
+
+## Changed
+
+- Further updates to init command, now installs scaped by default into your project if you initialize a package.json.
+
+## Bug Fixes
+
+- All messages and errors from every conmmand is converted to our messages system.
+- Removed unnecessary packages.
+- Updated it so that you need atleast Node 18 to download Scaped.
+
 # v0.2.0 (2024-06-08)
 
 ## Changed

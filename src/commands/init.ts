@@ -14,6 +14,7 @@ const init: CommandInterface = {
     name: ["init"],
     execute: async (args) => {
         let lang: "JavaScript" | "TypeScript" = "JavaScript"
+        let PluginPath: string;
 
         if (!args._[1]) {
             Errors.scapedError("you did not give a name for your plugin!");
@@ -22,29 +23,29 @@ const init: CommandInterface = {
             lang = "TypeScript";
         }
 
-        console.log(ansiColors.blue(`initializing your ${lang.toLowerCase()} plugin...`));
+        if (args._[2]) {
+            if (typeof args._[2] == "number") {
+                Errors.scapedError("your plugin directory cannot be a number!");
+                return;
+            }
+            const finalDir = path.join(process.cwd(), args._[2]);
+
+            await fse.ensureDir(finalDir);
+
+            PluginPath = finalDir;
+        } else {
+            const finalDir = process.cwd();
+            PluginPath = finalDir;
+        }
+
+        Errors.scapedInfo(`initializing your ${lang.toLowerCase()} plugin...\n`);
         const initTime = Date.now();
 
         try {
             if (lang == "JavaScript") {
                 const TemplatePath = path.join(__dirname, "..", "..", "plugin-templates", "javascript-template");
-                let PluginPath: string;
 
                 // check if user specified a directory, if no initialize it in current directory
-                if (args._[2]) {
-                    if (typeof args._[2] == "number") {
-                        Errors.scapedError("your plugin directory cannot be a number!");
-                        return;
-                    }
-                    const finalDir = path.join(process.cwd(), args._[2]);
-
-                    await fse.ensureDir(finalDir);
-
-                    PluginPath = finalDir;
-                } else {
-                    const finalDir = process.cwd();
-                    PluginPath = finalDir;
-                }
 
                 await fse.copy(TemplatePath, PluginPath);
                 const Config = `const Config = {
@@ -80,17 +81,69 @@ export default Config;`
   "description": ""
 }
 `
-                    console.log("\nNPM initialization in progress...");
+                    Errors.scapedInfo("\nNPM initialization in progress...");
                     await fse.writeFile(PluginPath + "/package.json", packagejson, "utf8");
-                    Errors.scapedInfo("NPM initialization done!");
+                    process.chdir(PluginPath);
+                    Errors.scapedInfo("installing scaped to your plugin...");
+                    await Terminal.asyncExecute("npm i scaped@latest");
+                    Errors.scapedInfo("NPM initialization done!\n");
                 }
                 
-                console.log(ansiColors.blue("\nplugin creation complete!"))
+                Errors.scapedInfo("plugin creation complete!");
                 const formattedTime = diagnosticFormat(Date.now() - initTime);
-                console.log(ansiColors.blue(`completed in ${formattedTime.time}${formattedTime.format}`));
+                Errors.scapedInfo(`completed in ${formattedTime.time}${formattedTime.format}`);
             } else if (lang == "TypeScript") {
-                Errors.scapedWarn("typescript plugins are currently being worked on, please use javascript.");
-                return;
+                const TemplatePath = path.join(__dirname, "..", "..", "plugin-templates", "typescript-template");
+
+                // check if user specified a directory, if no initialize it in current directory
+
+                await fse.copy(TemplatePath, PluginPath);
+                const Config = `import { PluginConfig } from "scaped/types"
+                
+const Config: PluginConfig = {
+    name: "${args._[1]}",
+    version: "1.0.0",
+    author: "put-your-name-here",
+    lang: "typescript" // This shouldn't be necessary to change unless you are converting your plugin from one to another.
+}
+
+// don't change the default export, name of the default export can be changed
+export default Config;`
+                await fse.writeFile(PluginPath + "/plugin.config.ts", Config, "utf8");
+
+                Errors.scapedInfo("initializing an NPM package is good for making your plugin public. do not remove the 'scaped-plugin-' prefix if you are.");
+                const InitNPM = await prompts({
+                    type: "confirm",
+                    name: "value",
+                    message: "do you want to init an NPM package?",
+                    initial: true
+                })
+
+                if (InitNPM.value) {
+                    const packagejson = `{
+  "name": "scaped-plugin-${args._[1]}",
+  "version": "1.0.0",
+  "main": "CommandsHolder.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "keywords": [],
+  "author": "put-your-npm-name-here",
+  "license": "ISC",
+  "description": ""
+}
+`
+                    Errors.scapedInfo("NPM initialization in progress...");
+                    await fse.writeFile(PluginPath + "/package.json", packagejson, "utf8");
+                    process.chdir(PluginPath);
+                    Errors.scapedInfo("installing scaped to your plugin...");
+                    await Terminal.asyncExecute("npm i scaped@latest");
+                    Errors.scapedInfo("NPM initialization done!\n");
+                }
+                
+                Errors.scapedInfo("plugin creation complete!");
+                const formattedTime = diagnosticFormat(Date.now() - initTime);
+                Errors.scapedInfo(`completed in ${formattedTime.time}${formattedTime.format}`);
             }
         } catch (err) {
             Errors.scapedError("something went wrong during creation of your plugin.");

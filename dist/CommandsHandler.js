@@ -65,7 +65,7 @@ function HandleCommand(args) {
             console.log(ansi_colors_1.default.red("scaped cli:"), "running version", package_json_1.default.version);
         }
         else {
-            console.log("The command \"", args._[0], "\" does not exist!");
+            Messages.scapedWarn(`the command \"${args._[0]}\"`);
         }
     });
 }

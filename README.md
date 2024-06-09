@@ -11,6 +11,7 @@ Scaped's source code is created in TypeScript. TypeScript support for plugins co
 
 Install the package as a developer dependent.
 ```npm i -D scaped```
+**YOU NEED ATLEAST NODE 18 TO DO THIS. THIS IS SO THAT THERE'S NO ISSUES WITH COMPATIBILITY.**
 
 ## Docs
 

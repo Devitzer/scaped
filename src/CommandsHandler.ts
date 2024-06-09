@@ -31,7 +31,7 @@ async function HandleCommand(args: yargsParser.Arguments) {
     } else if (args.v || args.version) {
         console.log(ansiColors.red("scaped cli:"), "running version", packagejson.version);
     } else {
-        console.log("The command \"", args._[0], "\" does not exist!");
+        Messages.scapedWarn(`the command \"${args._[0]}\"`)
     }
 }
 

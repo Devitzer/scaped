@@ -1,6 +1,6 @@
 {
   "name": "scaped",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A CLI that can be extended with plugins. Has standard commands. Made in TypeScript.",
   "main": "dist/cli.js",
   "types": "types.d.ts",
@@ -27,11 +27,9 @@
   "author": "typescape",
   "license": "GPL-3.0",
   "devDependencies": {
-    "@scaped/javascript-plugin": "^1.0.0-f2",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.13.0",
     "@types/prompts": "^2.4.9",
-    "@types/shelljs": "^0.8.15",
     "@types/yargs": "^17.0.32",
     "rimraf": "^5.0.7",
     "ts-node": "^10.9.2",
@@ -43,5 +41,8 @@
     "prompts": "^2.4.2",
     "yargs": "^17.7.2",
     "yargs-parser": "^21.1.1"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
