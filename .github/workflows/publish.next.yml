@@ -1,8 +1,9 @@
-name: "NPM Publish"
+name: "NPM Publish Next"
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - next
       
 jobs:
     publish:
@@ -21,7 +22,7 @@ jobs:
             - run: npm ci
             ## PUBLISH PACKAGE ##
             - name: Publish
-              run: npm publish --provenance --access public
+              run: npm publish --tag next --provenance --access public
               working-directory: ./
               env:
                 NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}

@@ -1,3 +1,16 @@
+# v0.3.1 (2024-06-10)
+
+Simple additions are added to this version of Scaped.
+
+## Added
+
+- Introduction to the "next" category. Instead of releasing potential unstable releases to the latest tag, we can test them instead on the next tag. You could use this as a beta, but it has a potential to have some features not working. You can find the changelog for it [here](./CHANGELOG-NEXT.md)
+- Workflow included with it.
+
+## Changed
+
+- Publish workflow, only activates upon a release publish. This allows for more stability.
+
 # v0.3.0 (2024-06-08)
 
 ## Added
