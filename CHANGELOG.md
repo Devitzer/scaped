@@ -1,4 +1,4 @@
-# v0.3.3-next (2024-06-11)
+# v0.3.3 (2024-06-11)
 
 Bug fixes to the preinstall script.
 
