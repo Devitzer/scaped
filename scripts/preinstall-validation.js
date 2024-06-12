@@ -6,4 +6,5 @@ const nodeCurrent = process.version;
 
 if (!semver.satisfies(nodeCurrent, nodeReq)) {
     console.error("scaped error:", "you need at least node v14.18.0 to install scaped, you are on", nodeCurrent);
+    process.exit(1);
 }
