@@ -1,6 +1,6 @@
 {
   "name": "scaped",
-  "version": "0.3.3-next",
+  "version": "0.3.3",
   "description": "A CLI that can be extended with plugins. Has standard commands. Made in TypeScript.",
   "main": "dist/cli.js",
   "types": "types.d.ts",
