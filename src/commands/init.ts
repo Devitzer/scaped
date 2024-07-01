@@ -5,7 +5,7 @@ import prompts from "prompts";
 
 import * as fse from "fs-extra";
 import * as path from "path";
-import * as Errors from "../helpers/messages";
+import * as Messages from "../helpers/messages";
 import * as Terminal from "../helpers/terminal";
 
 //! COMMAND INTERFACE
@@ -14,10 +14,11 @@ const init: CommandInterface = {
     name: ["init"],
     execute: async (args) => {
         let lang: "JavaScript" | "TypeScript" = "JavaScript"
+        let extension: "ts" | "js" = "js";
         let PluginPath: string;
 
         if (!args._[1]) {
-            Errors.scapedError("you did not give a name for your plugin!");
+            Messages.scapedError("you did not give a name for your plugin!");
             return;
         } else if (args.typescript) {
             lang = "TypeScript";
@@ -25,7 +26,7 @@ const init: CommandInterface = {
 
         if (args._[2]) {
             if (typeof args._[2] == "number") {
-                Errors.scapedError("your plugin directory cannot be a number!");
+                Messages.scapedError("your plugin directory cannot be a number!");
                 return;
             }
             const finalDir = path.join(process.cwd(), args._[2]);
@@ -38,7 +39,7 @@ const init: CommandInterface = {
             PluginPath = finalDir;
         }
 
-        Errors.scapedInfo(`initializing your ${lang.toLowerCase()} plugin...\n`);
+        Messages.scapedInfo(`initializing your ${lang.toLowerCase()} plugin...\n`);
         const initTime = Date.now();
 
         try {
@@ -59,7 +60,7 @@ const init: CommandInterface = {
 export default Config;`
                 await fse.writeFile(PluginPath + "/plugin.config.js", Config, "utf8");
 
-                Errors.scapedInfo("initializing an NPM package is good for making your plugin public. do not remove the 'scaped-plugin-' prefix if you are.");
+                Messages.scapedInfo("initializing an NPM package is good for making your plugin public. do not remove the 'scaped-plugin-' prefix if you are.");
                 const InitNPM = await prompts({
                     type: "confirm",
                     name: "value",
@@ -81,17 +82,17 @@ export default Config;`
   "description": ""
 }
 `
-                    Errors.scapedInfo("\nNPM initialization in progress...");
+                    Messages.scapedInfo("\nNPM initialization in progress...");
                     await fse.writeFile(PluginPath + "/package.json", packagejson, "utf8");
                     process.chdir(PluginPath);
-                    Errors.scapedInfo("installing scaped to your plugin...");
+                    Messages.scapedInfo("installing scaped to your plugin...");
                     await Terminal.asyncExecute("npm i scaped@latest");
-                    Errors.scapedInfo("NPM initialization done!\n");
+                    Messages.scapedInfo("NPM initialization done!\n");
                 }
                 
-                Errors.scapedInfo("plugin creation complete!");
+                Messages.scapedInfo("plugin creation complete!");
                 const formattedTime = diagnosticFormat(Date.now() - initTime);
-                Errors.scapedInfo(`completed in ${formattedTime.time}${formattedTime.format}`);
+                Messages.scapedInfo(`completed in ${formattedTime.time}${formattedTime.format}`);
             } else if (lang == "TypeScript") {
                 const TemplatePath = path.join(__dirname, "..", "..", "plugin-templates", "typescript-template");
 
@@ -111,7 +112,7 @@ const Config: PluginConfig = {
 export default Config;`
                 await fse.writeFile(PluginPath + "/plugin.config.ts", Config, "utf8");
 
-                Errors.scapedInfo("initializing an NPM package is good for making your plugin public. do not remove the 'scaped-plugin-' prefix if you are.");
+                Messages.scapedInfo("initializing an NPM package is good for making your plugin public.");
                 const InitNPM = await prompts({
                     type: "confirm",
                     name: "value",
@@ -123,7 +124,7 @@ export default Config;`
                     const packagejson = `{
   "name": "scaped-plugin-${args._[1]}",
   "version": "1.0.0",
-  "main": "CommandsHolder.js",
+  "main": "CommandsHolder.ts",
   "scripts": {
     "test": "echo \\\"Error: no test specified\\\" && exit 1"
   },
@@ -133,20 +134,20 @@ export default Config;`
   "description": ""
 }
 `
-                    Errors.scapedInfo("NPM initialization in progress...");
+                    Messages.scapedInfo("NPM initialization in progress...");
                     await fse.writeFile(PluginPath + "/package.json", packagejson, "utf8");
                     process.chdir(PluginPath);
-                    Errors.scapedInfo("installing scaped to your plugin...");
+                    Messages.scapedInfo("installing scaped to your plugin...");
                     await Terminal.asyncExecute("npm i scaped@latest");
-                    Errors.scapedInfo("NPM initialization done!\n");
+                    Messages.scapedInfo("NPM initialization done!\n");
                 }
                 
-                Errors.scapedInfo("plugin creation complete!");
+                Messages.scapedInfo("plugin creation complete!");
                 const formattedTime = diagnosticFormat(Date.now() - initTime);
-                Errors.scapedInfo(`completed in ${formattedTime.time}${formattedTime.format}`);
+                Messages.scapedInfo(`completed in ${formattedTime.time}${formattedTime.format}`);
             }
         } catch (err) {
-            Errors.scapedError("something went wrong during creation of your plugin.");
+            Messages.scapedError("something went wrong during creation of your plugin.");
             console.log(err);
         }
     }
