@@ -1,3 +1,7 @@
+# v0.4.1-next2 (2024-07-03)
+
+Changes to Changelog protocol.
+
 # v0.4.1-next (2024-07-03)
 
 GitHub repo fixes.

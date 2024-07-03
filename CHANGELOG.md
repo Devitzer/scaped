@@ -1,3 +1,15 @@
+# v0.4.1 (2024-07-03)
+
+GitHub repo fixes. Changes to the Changelog Protocol.
+
+## Changed
+
+- Changelog Protocol now includes detail.
+
+## Removed
+
+- node_modules folder is now gone (waste of space on the repo)
+
 # v0.4.0 (2024-07-03)
 
 A new way to configure your plugin.
