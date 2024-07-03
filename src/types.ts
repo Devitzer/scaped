@@ -1,9 +1,9 @@
-import yargsParser = require("yargs-parser")
-import * as Messages from "./helpers/messages";
+import yargsParser from "yargs-parser";
+import * as Messages from "./helpers/messages.js";
 
 interface CommandInterface {
     name: string[]
-    execute: (args: yargsParser.Arguments) => any
+    execute: (args: yargsParser.Arguments) => void
 }
 
 interface PluginConfig {
@@ -31,22 +31,24 @@ class PluginConfiguration {
      * 
      * @since 0.4.0
      */
-    public Validate() {
-        Messages.scapedInfo("running validation...");
+    public Validate(): boolean {
         if (typeof this.config.name !== "string") {
             Messages.scapedError("The property \"name\" was not a string!");
-            return;
+            Messages.scapedError("Because of this, we don't know exactly what plugin is causing it, but this is the name it gave:", );
+            return false;
         } else if (typeof this.config.author !== "string") {
             Messages.scapedError("The property \"author\" was not a string!");
-            return;
+            return false;
         } else if (typeof this.config.version !== "string") {
             //TODO FUTURE PLAN (verify that it's a semantic version instead, using semver.)
             Messages.scapedError("The property \"version\" was not a string!");
-            return;
+            return false;
         } else if (this.config.lang !== "javascript" && this.config.lang !== "typescript") {
             Messages.scapedError("The property \"lang\" must either be \"javascript\" or \"typescript\"!");
-            return;
+            return false;
         }
+
+        return true;
     }
 
     /**
@@ -56,6 +58,7 @@ class PluginConfiguration {
      * @returns PluginConfig
      */
     public get(): PluginConfig {
+        this.Validate();
         return this.config;
     }
 }

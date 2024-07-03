@@ -1,9 +1,10 @@
-import { CommandInterface } from "../types";
+import { CommandInterface } from "../types.js";
 
 //! COMMAND INTERFACE
 
 const help: CommandInterface = {
     name: ["help", "commands"],
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     execute: async (args) => {
         console.log("Command List and Functions:")
         console.log("help / commands    -   Self-explanatory. Command list and their functions.")

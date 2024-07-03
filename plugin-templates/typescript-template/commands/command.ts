@@ -1,6 +1,6 @@
 //! THE COMMAND, STORED IN A VARIABLE
 
-import { CommandInterface } from "scaped/types";
+import { CommandInterface } from "scaped";
 
 const command: CommandInterface = {
     // Even if you don't want to specify an alias,

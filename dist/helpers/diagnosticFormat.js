@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 function diagnosticFormat(milliseconds) {
     if (milliseconds >= 1000) {
         return {
@@ -12,4 +10,4 @@ function diagnosticFormat(milliseconds) {
         format: "ms"
     };
 }
-exports.default = diagnosticFormat;
+export default diagnosticFormat;
