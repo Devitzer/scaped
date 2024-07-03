@@ -1,6 +1,6 @@
 {
   "name": "scaped",
-  "version": "0.5.0-next",
+  "version": "0.4.1-next",
   "description": "A CLI that can be extended with plugins. Has standard commands. Made in TypeScript.",
   "main": "dist/types.js",
   "types": "types.d.ts",
@@ -18,14 +18,6 @@
     "build": "npx tsc",
     "lint": "eslint ."
   },
-  "files": [
-    "dist",
-    "plugin-templates",
-    "scripts",
-    "CHANGELOG.md",
-    "CHANGELOG-NEXT.md",
-    "CHANGELOG-PROTOCOL.md"
-  ],
   "keywords": [
     "typescript",
     "javascript",

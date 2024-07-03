@@ -5,7 +5,6 @@ GitHub repo fixes.
 ## Removed
 
 - node_modules folder is now gone (waste of space on the repo)
-- Unecessary files in the NPM package (the size should be smaller now)
 
 # v0.4.0-next (2024-07-02)
 
