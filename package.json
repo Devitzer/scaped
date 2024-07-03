@@ -18,6 +18,14 @@
     "build": "npx tsc",
     "lint": "eslint ."
   },
+  "files": [
+    "dist",
+    "plugin-templates",
+    "scripts",
+    "CHANGELOG.md",
+    "CHANGELOG-NEXT.md",
+    "CHANGELOG-PROTOCOL.md"
+  ],
   "keywords": [
     "typescript",
     "javascript",
