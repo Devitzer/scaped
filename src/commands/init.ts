@@ -4,6 +4,8 @@ import diagnosticFormat from "../helpers/diagnosticFormat.js";
 
 import fse from "fs-extra";
 import * as path from "path";
+import ora from "ora";
+
 import * as Messages from "../helpers/messages.js";
 import * as Terminal from "../helpers/terminal.js";
 
