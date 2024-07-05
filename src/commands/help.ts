@@ -1,4 +1,4 @@
-import { CommandInterface } from "../types.js";
+import { CommandInterface } from "../scaped.js";
 
 //! COMMAND INTERFACE
 

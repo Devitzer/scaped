@@ -2,55 +2,57 @@ import { getDirname } from "../helpers/vars.js";
 import diagnosticFormat from "../helpers/diagnosticFormat.js";
 import fse from "fs-extra";
 import * as path from "path";
+import ora from "ora";
+import enquirer from "enquirer";
+const { prompt } = enquirer;
 import * as Messages from "../helpers/messages.js";
 import * as Terminal from "../helpers/terminal.js";
 const __dirname = getDirname(import.meta.url);
 //! COMMAND INTERFACE
 const init = {
     name: ["init"],
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     execute: async (args) => {
-        const lang = args.typescript ? "TypeScript" : "JavaScript";
+        const questions = await prompt([
+            {
+                type: "input",
+                name: "name",
+                message: "What do you want to call your plugin?"
+            },
+            {
+                type: "select",
+                name: "lang",
+                message: "Which language do you want to use?",
+                choices: [
+                    "JavaScript",
+                    "TypeScript"
+                ]
+            }
+        ]);
+        const lang = questions.lang;
         const extension = lang === "TypeScript" ? "ts" : "js";
-        if (!args._[1]) {
-            Messages.scapedError("you did not give a name for your plugin!");
-            return;
-        }
-        if (typeof args._[2] === "number") {
-            Messages.scapedError("the directory of your plugin cannot be a number!");
-            return;
-        }
-        const PluginPath = path.join(process.cwd(), args._[2] || "");
+        const PluginPath = path.join(process.cwd(), `/${questions.name}`);
         await fse.ensureDir(PluginPath);
-        Messages.scapedInfo(`initializing your ${lang.toLowerCase()} plugin...\n`);
+        Messages.scapedInfo(`initializing your ${lang.toLowerCase()} plugin...`);
         const initTime = Date.now();
         try {
+            Messages.scapedInfo("Initializing your plugin configuration...");
             const TemplatePath = path.join(__dirname, "..", "..", "plugin-templates", `${lang.toLowerCase()}-template`);
             await fse.copy(TemplatePath, PluginPath);
-            const Config = lang === "JavaScript" ?
-                `import { PluginConfiguration } from "scaped";
+            const Config = `import { PluginConfiguration } from "scaped";
             
 const Config = new PluginConfiguration({
-    name: "${args._[1]}",
+    name: "${questions.name}",
     version: "1.0.0",
     author: "put-your-name-here",
-    lang: "javascript" 
-});
-
-export default Config;` :
-                `import { PluginConfiguration } from "scaped";
-            
-const Config = new PluginConfiguration({
-    name: "${args._[1]}",
-    version: "1.0.0",
-    author: "put-your-name-here",
-    lang: "typescript"
+    lang: "${lang.toLowerCase()}" 
 });
 
 export default Config;`;
             await fse.writeFile(path.join(PluginPath, `plugin.config.${extension}`), Config, "utf8");
-            Messages.scapedInfo("initializing an NPM package...");
+            Messages.scapedInfo("Initializing an NPM package...");
             const packagejson = `{
-    "name": "scaped-plugin-${args._[1]}",
+    "name": "scaped-plugin-${questions.name}",
     "version": "1.0.0",
     "main": "CommandsHolder.${extension}",
     "scripts": { "test": "echo \\"Error: no test specified\\" && exit 1" },
@@ -59,18 +61,19 @@ export default Config;`;
     "license": "ISC",
     "description": ""
 }`;
-            Messages.scapedInfo("NPM initialization in progress...");
             await fse.writeFile(path.join(PluginPath, "package.json"), packagejson, "utf8");
             process.chdir(PluginPath);
-            Messages.scapedInfo("installing scaped to your plugin...");
+            const spinner = ora("Installing scaped to your package...");
+            spinner.color = "red";
+            spinner.start();
             await Terminal.asyncExecute("npm i scaped@latest");
-            Messages.scapedInfo("NPM initialization done!");
-            Messages.scapedInfo("plugin creation complete!");
+            spinner.stop();
+            Messages.scapedInfo("Plugin creation complete!");
             const formattedTime = diagnosticFormat(Date.now() - initTime);
-            Messages.scapedInfo(`completed in ${formattedTime.time}${formattedTime.format}`);
+            Messages.scapedInfo(`Completed in ${formattedTime.time}${formattedTime.format}.`);
         }
         catch (err) {
-            Messages.scapedError("something went wrong during creation of your plugin.");
+            Messages.scapedError("Something went wrong during creation of your plugin.");
             console.log(err);
         }
     }

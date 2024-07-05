@@ -2,8 +2,8 @@
   "name": "scaped",
   "version": "0.5.0-next",
   "description": "A CLI that can be extended with plugins. Has standard commands. Made in TypeScript.",
-  "main": "dist/types.js",
-  "types": "types.d.ts",
+  "main": "dist/scaped.js",
+  "types": "scaped.d.ts",
   "type": "module",
   "bin": {
     "scaped": "dist/cli.js"
@@ -43,6 +43,7 @@
     "typescript-eslint": "^7.14.1"
   },
   "dependencies": {
+    "enquirer": "^2.4.1",
     "fs-extra": "^11.2.0",
     "ora": "^8.0.1",
     "picocolors": "^1.0.1",
