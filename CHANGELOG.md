@@ -1,3 +1,23 @@
+# v0.5.0 (2024-07-05)
+
+Initialization is easier than ever.
+
+## Added
+
+- Loading spinners to init command
+- Init command now asks questions. No need to include args in the command, simply run `scaped init` and follow the prompts.
+
+## Changed
+
+- Added JSDoc detail to `PluginConfiguration`'s constructor.
+- Conversion from `prompts` to `enquirer`
+- Added option to the `PluginConfiguration.Validate` command where you can now choose whether not it logs errors or just returns a boolean.
+
+## Notices
+
+- NPM initialization being optional is cancelled for now, it will init one automatically, so just make a directory and init your plugin right away by running `scaped init` instead of `npm init`
+- The new error system mentioned on GitHub is pushed back to a later update (potentially v0.6.0)
+
 # v0.4.1 (2024-07-03)
 
 GitHub repo fixes. Changes to the Changelog Protocol.
