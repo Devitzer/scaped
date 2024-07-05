@@ -65,7 +65,7 @@ class PluginConfiguration {
     }
 
     /**
-     * Returns the config you defined. Nothing major.
+     * Returns the config you defined. We use this to get your config.
      * 
      * 
      * @returns PluginConfig

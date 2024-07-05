@@ -1,4 +1,13 @@
-# v0.5.0-next (2024-07-05)
+# v0.5.0-next3 (2024-07-04)
+
+Changelog fixes for v0.5.0-next2, type declaration updates.
+
+## Changed
+
+- Type declarations to include the new "log" arguement for the `PluginConfiguration` class
+- Changelog at version v0.5.0-next2, specifically incorrect version number, and date.
+
+# v0.5.0-next2 (2024-07-04)
 
 Initialization is easier than ever.
 
