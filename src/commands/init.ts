@@ -9,7 +9,7 @@ import enquirer from "enquirer";
 const { prompt } = enquirer;
 
 import * as Messages from "../helpers/messages.js";
-import * as Terminal from "../helpers/terminal.js";
+import spawn from "cross-spawn";
 
 const __dirname = getDirname(import.meta.url);
 
@@ -82,12 +82,67 @@ export default Config;`
                 const spinner = ora("Installing scaped to your package...")
                 spinner.color = "red";
                 spinner.start();
-                await Terminal.asyncExecute("npm i scaped@latest");
+                // start a spinner and start the npm installation
+                const scapedInstallation = spawn("npm", ["i", "scaped"]);
+                scapedInstallation.stderr?.on("data", (data) => {
+                    Messages.scapedError("An error occured:");
+                    console.error(data);
+                });
+                // make sure each process runs one by one
+                await new Promise<void>((resolve, reject) => {
+                    scapedInstallation.on("close", (code) => {
+                        if (code === 0) {
+                            resolve();
+                        } else {
+                            reject(new Error(`Scaped installation failed with code ${code}`));
+                        }
+                    });
+                    scapedInstallation.stderr?.on("data", (data) => {
+                        Messages.scapedError("An error occured:");
+                        console.error(data);
+                    });
+                });
+                if (lang === "TypeScript") {
+                    // typescript stuff that gets installed
+                    spinner.text = "Installing typescript to your package...";
+                    const typescriptInstallation = spawn("npm", ["i", "-D", "typescript"]);
+                    await new Promise<void>((resolve, reject) => {
+                        typescriptInstallation.on("close", (code) => {
+                            if (code === 0) {
+                                resolve();
+                            } else {
+                                reject(new Error(`Scaped installation failed with code ${code}`));
+                            }
+                        });
+                        typescriptInstallation.stderr?.on("data", (data) => {
+                            Messages.scapedError("An error occured:");
+                            console.error(data);
+                        });
+                    });
+                    spinner.text = "Installing @types/node to your package...";
+                    const typesnodeInstallation = spawn("npm", ["i", "-D", "@types/node"]);
+                    await new Promise<void>((resolve, reject) => {
+                        typesnodeInstallation.on("close", (code) => {
+                            if (code === 0) {
+                                resolve();
+                            } else {
+                                reject(new Error(`Scaped installation failed with code ${code}`));
+                            }
+                        });
+                        typesnodeInstallation.stderr?.on("data", (data) => {
+                            Messages.scapedError("An error occured:");
+                            console.error(data);
+                        });
+                    });
+                }
                 spinner.stop();
 
             Messages.scapedInfo("Plugin creation complete!");
             const formattedTime = diagnosticFormat(Date.now() - initTime);
             Messages.scapedInfo(`Completed in ${formattedTime.time}${formattedTime.format}.`);
+            if (lang === "TypeScript") {
+                Messages.scapedInfo("Use npx tsc to compile your plugin source into a dist folder.");
+            }
         } catch (err) {
             Messages.scapedError("Something went wrong during creation of your plugin.");
             console.log(err);
