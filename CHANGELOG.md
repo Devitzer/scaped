@@ -1,3 +1,24 @@
+# v0.5.1 (2024-07-06)
+
+TypeScript Plugin Template v2
+
+## Added
+
+- TypeScript Plugin Templates now feature a predefined `tsconfig.json`, and we install `typescript` and `@types/node` into your project.
+
+## Removed
+
+- src folder from NPM (not GitHub), because it takes up about 10kb.
+
+## Bug Fixes
+
+- Changed `exec` to `spawn`, which is better for executing npm installs in the init command. (yes, it works on Windows.)
+
+## Notices
+
+The TSPT (TypeScript Plugin Template) V2 update has sadly made the init command quite a bit bigger (about 50 lines), because I want to run all of the installations individually (more presentable to the user). I have not decided how to fix it yet. It may actually just be ignored, scaped is in development and this is the time to take up space on updates, to add new features. <br>
+Although, the NPM package unpacked size has actually gone down by about 8kb compared to v0.5.0, due to removing the src folder from the NPM package.
+
 # v0.5.0 (2024-07-05)
 
 Initialization is easier than ever.
