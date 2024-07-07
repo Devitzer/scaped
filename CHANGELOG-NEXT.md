@@ -1,3 +1,11 @@
+# v0.5.1-next2 (2024-07-06)
+
+Fixes to .npmignore.
+
+## Bug Fixes
+
+- .npmignore was ignoring ALL folders that were named "src", when it was only meant to block the src root file. This should be fixed now.
+
 # v0.5.1-next (2024-07-05)
 
 TypeScript Plugin Template v2
