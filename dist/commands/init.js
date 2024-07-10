@@ -126,6 +126,9 @@ export default Config;`;
             Messages.scapedInfo("Plugin creation complete!");
             const formattedTime = diagnosticFormat(Date.now() - initTime);
             Messages.scapedInfo(`Completed in ${formattedTime.time}${formattedTime.format}.`);
+            if (lang === "TypeScript") {
+                Messages.scapedInfo("Use npx tsc to compile your plugin source into a dist folder.");
+            }
         }
         catch (err) {
             Messages.scapedError("Something went wrong during creation of your plugin.");

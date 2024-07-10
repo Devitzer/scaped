@@ -19,6 +19,7 @@ async function HandleCommand(args) {
         args._[0] = "";
     }
     if (help.name.includes(args._[0])) {
+        // always add awaits to internal commands, even if not async.
         await help.execute(args);
     }
     else if (init.name.includes(args._[0])) {
@@ -28,7 +29,7 @@ async function HandleCommand(args) {
         console.log(pc.red("scaped cli:"), "running version", packagejson.version);
     }
     else {
-        Messages.scapedWarn(`the command "${args._[0]}"`);
+        Messages.scapedWarn(`the command "${args._[0]}" doesn't exist!`);
     }
 }
 const CommandHandler = {
