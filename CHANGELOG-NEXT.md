@@ -1,3 +1,12 @@
+# v0.5.2-next (2024-07-10)
+
+Command fixes, repo fixes.
+
+## Bug Fixes
+
+- Removed package-lock.json from the repo (takes up like 2000 lines), which should've been fixed in v0.4.1
+- Added missing text from missing command error.
+
 # v0.5.1-next2 (2024-07-06)
 
 Fixes to .npmignore.
