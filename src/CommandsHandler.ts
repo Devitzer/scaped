@@ -26,13 +26,14 @@ async function HandleCommand(args: yargsParser.Arguments) {
     }
 
     if (help.name.includes(args._[0])) {
+        // always add awaits to internal commands, even if not async.
         await help.execute(args);
     } else if (init.name.includes(args._[0])) {
         await init.execute(args);
     } else if (args.v || args.version) {
         console.log(pc.red("scaped cli:"), "running version", packagejson.version);
     } else {
-        Messages.scapedWarn(`the command "${args._[0]}"`)
+        Messages.scapedWarn(`the command "${args._[0]}" doesn't exist!`);
     }
 }
 
