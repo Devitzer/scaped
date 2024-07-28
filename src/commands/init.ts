@@ -104,8 +104,8 @@ export default Config;`
                 });
                 if (lang === "TypeScript") {
                     // typescript stuff that gets installed
-                    spinner.text = "Installing typescript to your package...";
-                    const typescriptInstallation = spawn("npm", ["i", "-D", "typescript"]);
+                    spinner.text = "Installing TypeScript dependencies...";
+                    const typescriptInstallation = spawn("npm", ["i", "-D", "typescript", "@types/node"]);
                     await new Promise<void>((resolve, reject) => {
                         typescriptInstallation.on("close", (code) => {
                             if (code === 0) {
@@ -115,21 +115,6 @@ export default Config;`
                             }
                         });
                         typescriptInstallation.stderr?.on("data", (data) => {
-                            Messages.scapedError("An error occured:");
-                            console.error(data);
-                        });
-                    });
-                    spinner.text = "Installing @types/node to your package...";
-                    const typesnodeInstallation = spawn("npm", ["i", "-D", "@types/node"]);
-                    await new Promise<void>((resolve, reject) => {
-                        typesnodeInstallation.on("close", (code) => {
-                            if (code === 0) {
-                                resolve();
-                            } else {
-                                reject(new Error(`Scaped installation failed with code ${code}`));
-                            }
-                        });
-                        typesnodeInstallation.stderr?.on("data", (data) => {
                             Messages.scapedError("An error occured:");
                             console.error(data);
                         });

@@ -1,3 +1,26 @@
+# v0.5.3-next (2024-07-27)
+
+Init command optimization.
+
+## Bug Fixes
+
+- TypeScript downloads are combined instead of ran seperately.
+
+## Upgrades
+
+- Upgraded `@types/node` from `v20.14.9` to `v20.14.12`.
+- Upgraded `rimraf` from `v5.0.7` to `v5.0.9`.
+- Upgraded `semver` from `v7.6.2` to `v7.6.3`.
+- Upgraded `typescript` from `v5.5.3` to `v5.5.4`.
+- Upgraded `typescript-eslint` from `v7.15.0` to `v7.17.0`
+
+## Notice
+
+Scaped is on a development hiatus, I'm focusing on another project currently, I guarantee that work will continue on Scaped by 2024-08-20. <br>
+The first thing that will happen upon return is testing both v0.5.2-next and v0.5.3-next and releasing both those versions to the main branch ASAP. Queued up next versions are a priority to fix.
+- Linux testing is prepared, and will be pushed back to this hiatus date. There is also a known issue where the init command does not work correctly (issue with the cross-spawn dependency) with Linux.
+- The CLI has been tested on v18 and should be good to go.
+
 # v0.5.2-next (2024-07-10)
 
 Command fixes, repo fixes.
