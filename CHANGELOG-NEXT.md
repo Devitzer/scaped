@@ -2,6 +2,10 @@
 
 Bug fixes, upgrades, notices.
 
+## Added
+
+- New command "error/err" in preparation for the new error system.
+
 ## Changed
 
 - Changelog Protocol. Updates involving advice and scheduled releases.
