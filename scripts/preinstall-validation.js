@@ -5,6 +5,8 @@ import pc from "picocolors";
 // subject to change, 18.0.0 was selected so that we can use ES2022, and we guarantee
 // that we will support the earliest LTS version of node, which means this requirement
 // will stay at node 18 until April 4th 2025.
+// we also recommend that you use the latest version of node 18 or in general when possible.
+// this will ensure full compatibility with scaped.
 const nodeReq = ">=18.0.0";
 const nodeReqShow = "v18.0.0";
 const nodeCurrent = version;

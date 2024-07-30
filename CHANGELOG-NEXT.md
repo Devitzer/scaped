@@ -1,3 +1,28 @@
+# v0.5.3-next2 (2024-07-29)
+
+Bug fixes, upgrades, notices.
+
+## Changed
+
+- Changelog Protocol. Updates involving advice and scheduled releases.
+- The preinstall validation script has extra comments added to it's file (preinstall-validation.js).
+
+## Bug Fixes
+
+- Fixed Linux bug with init command's "cross-spawn" module. (moved from dev dependencies to regular dependencies)
+- Remove the option to use --version flag if you are running a command.
+
+## Upgrades
+
+- Upgrade `@types/node` from `v20.14.12` to `v22.0.0`.
+- Upgrade `typescript-eslint` from `v7.17.0` to `v7.18.0`.
+
+## Notice
+
+I would like to elaborate more on the hiatus. More time has come up on our schedule and thus more work will be done on Scaped. A plugin handler will not be made until the hiatus end date, but developments and testing will be done. Work will recommence in this order:
+- Fix bugs
+- Make an error system, using codes rather than messages. A new command may be used to look up what the code means. Here is an example of the command `scaped (err|error) [code]`
+
 # v0.5.3-next (2024-07-27)
 
 Init command optimization.
