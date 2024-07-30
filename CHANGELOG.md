@@ -1,3 +1,17 @@
+# v0.5.2-next (2024-07-30)
+
+Command fixes, repo fixes.
+
+## Bug Fixes
+
+- Removed package-lock.json from the repo (takes up like 2000 lines), which should've been fixed in v0.4.1
+- Added missing text from missing command error.
+
+## Notice
+
+- (was tested in v0.5.2-next on v18.16.1) Our CLI needs testing on Node v18, we have been testing on v22 the whole time, v18 tests will be made and fixes will be made accordingly.
+- Linux testing will be done starting 08/01/2024. This is so that we can test on both Unix systems and Windows systems (Windows earns priority for now.)
+
 # v0.5.1 (2024-07-06)
 
 TypeScript Plugin Template v2
