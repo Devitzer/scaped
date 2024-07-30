@@ -1,4 +1,4 @@
-# v0.5.2-next (2024-07-30)
+# v0.5.2 (2024-07-30)
 
 Command fixes, repo fixes.
 
