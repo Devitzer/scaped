@@ -1,4 +1,12 @@
-# v0.5.4-next (2024-07-29)
+# v0.5.4-next2 (2024-07-31)
+
+Small tweak to the v0.5.4-next changelog.
+
+## Bug Fixes
+
+- Incorrect v0.5.4-next date on the changelog. (said 2024-07-29 rather than 2024-07-31)
+
+# v0.5.4-next (2024-07-31)
 
 Scaped CLI --version flag slight change. README changes.
 
