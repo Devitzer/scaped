@@ -1,4 +1,4 @@
-# v0.5.4 (2024-07-29)
+# v0.5.4 (2024-07-31)
 
 Scaped CLI --version flag slight change. README changes.
 
