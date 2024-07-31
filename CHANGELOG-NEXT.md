@@ -1,6 +1,14 @@
+# v0.5.5-next2 (2024-07-31)
+
+Further reduction by ~10kb.
+
+## Bug Fixes
+
+- Added CHANGELOG related items to .npmignore.
+
 # v0.5.5-next (2024-07-31)
 
-Make NPM package about 500 byte smaller.
+Make NPM package about 500 bytes smaller.
 
 ## Bug Fixes
 
