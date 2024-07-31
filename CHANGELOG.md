@@ -1,3 +1,11 @@
+# v0.5.5 (2024-07-31)
+
+Scaped NPM package size has been optimized severely. ~20kb shaved off.
+
+## Bug Fixes
+- Added CHANGELOG related items to .npmignore.
+- Added tsconfig.json to .npmignore.
+
 # v0.5.4 (2024-07-31)
 
 Scaped CLI --version flag slight change. README changes.
