@@ -1,3 +1,55 @@
+# v0.5.3-next2 (2024-07-29)
+
+Bug fixes, upgrades, notices.
+
+## Added
+
+- New command "error/err" in preparation for the new error system.
+
+## Changed
+
+- Changelog Protocol. Updates involving advice and scheduled releases.
+- The preinstall validation script has extra comments added to it's file (preinstall-validation.js).
+
+## Bug Fixes
+
+- Fixed Linux bug with init command's "cross-spawn" module. (moved from dev dependencies to regular dependencies)
+- Remove the option to use --version flag if you are running a command.
+
+## Upgrades
+
+- Upgrade `@types/node` from `v20.14.12` to `v22.0.0`.
+- Upgrade `typescript-eslint` from `v7.17.0` to `v7.18.0`.
+
+## Notice
+
+I would like to elaborate more on the hiatus. More time has come up on our schedule and thus more work will be done on Scaped. A plugin handler will not be made until the hiatus end date, but developments and testing will be done. Work will recommence in this order:
+- Fix bugs
+- Make an error system, using codes rather than messages. A new command may be used to look up what the code means. Here is an example of the command `scaped (err|error) [code]`
+
+# v0.5.3-next (2024-07-27)
+
+Init command optimization.
+
+## Bug Fixes
+
+- TypeScript downloads are combined instead of ran seperately.
+
+## Upgrades
+
+- Upgraded `@types/node` from `v20.14.9` to `v20.14.12`.
+- Upgraded `rimraf` from `v5.0.7` to `v5.0.9`.
+- Upgraded `semver` from `v7.6.2` to `v7.6.3`.
+- Upgraded `typescript` from `v5.5.3` to `v5.5.4`.
+- Upgraded `typescript-eslint` from `v7.15.0` to `v7.17.0`
+
+## Notice
+
+Scaped is on a development hiatus, I'm focusing on another project currently, I guarantee that work will continue on Scaped by 2024-08-20. <br>
+The first thing that will happen upon return is testing both v0.5.2-next and v0.5.3-next and releasing both those versions to the main branch ASAP. Queued up next versions are a priority to fix.
+- Linux testing is prepared, and will be pushed back to this hiatus date. There is also a known issue where the init command does not work correctly (issue with the cross-spawn dependency) with Linux.
+- The CLI has been tested on v18 and should be good to go.
+
 # v0.5.2-next (2024-07-10)
 
 Command fixes, repo fixes.
