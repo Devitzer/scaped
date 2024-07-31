@@ -1,3 +1,34 @@
+# v0.5.3 (2024-07-31)
+
+Fixes, upgrades, notices, optimizations. The typical.
+
+## Added
+
+- New command "error/err" in preparation for the new error system.
+
+## Changed
+
+- Changelog Protocol. Updates involving advice and scheduled releases.
+- The preinstall validation script has extra comments added to it's file (preinstall-validation.js).
+
+## Bug Fixes
+
+- Fixed Linux bug with init command's "cross-spawn" module. (moved from dev dependencies to regular dependencies)
+- Remove the option to use --version flag if you are running a command.
+- TypeScript downloads are combined instead of ran seperately.
+
+## Upgrades
+
+- Upgraded `@types/node` from `v20.14.9` to `v22.0.0`.
+- Upgraded `rimraf` from `v5.0.7` to `v5.0.9`.
+- Upgraded `semver` from `v7.6.2` to `v7.6.3`.
+- Upgraded `typescript` from `v5.5.3` to `v5.5.4`.
+- Upgraded `typescript-eslint` from `v7.15.0` to `v7.18.0`
+
+## Notices
+
+You can find the relevant notices on versions v0.5.3-next and v0.5.3-next2 [here](./CHANGELOG-NEXT.md)
+
 # v0.5.2 (2024-07-30)
 
 Command fixes, repo fixes.
