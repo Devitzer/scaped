@@ -1,3 +1,20 @@
+# v0.5.4-next (2024-07-29)
+
+Scaped CLI --version flag slight change. README changes.
+
+## Changed
+
+- The --version flag in the CLI returns a slightly different message. <br>
+Old: `scaped cli: running version 0.5.4-next` <br>
+New: `v0.5.4-next (UNSTABLE VERSION)` <br>
+With a Non Next Version: `v0.5.4`
+- README.md installation instructions.
+- Now being linted with ESLint v9.
+
+# Notice
+- Upgrades of development dependencies will no longer be disclosed.
+- This means that upgrades will only be announced for the following packages: `cross-spawn`, `enquirer`, `fx-extra`, `ora`, `picocolors`, `semver`, `yargs`, and `yargs-parser`. The list is subject to be outdated in the future.
+
 # v0.5.3-next2 (2024-07-29)
 
 Bug fixes, upgrades, notices.

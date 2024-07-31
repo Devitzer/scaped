@@ -30,7 +30,12 @@ async function HandleCommand(args) {
         await error.execute(args);
     }
     else if ((args.v || args.version) && !args._[0]) {
-        console.log(pc.red("scaped cli:"), "running version", packagejson.version);
+        if (/next\d*$/.test(packagejson.version)) {
+            console.log("v" + packagejson.version + " " + pc.red("(UNSTABLE VERSION)"));
+        }
+        else {
+            console.log("v" + packagejson.version);
+        }
     }
     else {
         Messages.scapedWarn(`the command "${args._[0]}" doesn't exist!`);

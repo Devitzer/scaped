@@ -1,6 +1,6 @@
 {
   "name": "scaped",
-  "version": "0.5.3",
+  "version": "0.5.4-next",
   "description": "A CLI that can be extended with plugins. Has standard commands. Made in TypeScript.",
   "main": "dist/scaped.js",
   "types": "scaped.d.ts",
@@ -31,17 +31,17 @@
   "author": "typescape",
   "license": "GPL-3.0",
   "devDependencies": {
-    "@eslint/js": "^8.56.0",
+    "@eslint/js": "^9.8.0",
     "@types/cross-spawn": "^6.0.6",
     "@types/fs-extra": "^11.0.4",
-    "@types/node": "^22.0.0",
+    "@types/node": "^18.0.0",
     "@types/yargs": "^17.0.32",
-    "eslint": "^8.56.0",
+    "eslint": "^9.8.0",
     "globals": "^15.8.0",
     "rimraf": "^5.0.9",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4",
-    "typescript-eslint": "^7.18.0"
+    "typescript-eslint": "^8.0.0"
   },
   "dependencies": {
     "cross-spawn": "^7.0.3",

@@ -9,9 +9,9 @@ Scaped's source code is created in TypeScript. TypeScript support for plugins co
 
 ## Installation
 
-Install the package as a developer dependent.
-```npm i -D scaped```
-**YOU NEED ATLEAST NODE 18.0.0 TO DO THIS. THIS IS SO THAT THERE'S NO ISSUES WITH COMPATIBILITY.**
+Depending on what you want to do, depends on your installation. If you only want to use plugins, you should install Scaped globally. You can do this like so: `npm install --global scaped` <br>
+If you want to make a plugin, first install the CLI globally using the install method above, and then run `scaped init` and answer the prompts. After, you will be provided with template files that has everything you need to get started.
+**YOU NEED ATLEAST NODE 18.0.0 TO RUN THE INSTALLATION.. THIS IS TO ENSURE THAT THERE'S NO COMPLICATIONS WITH COMPATIBILITY. You may use an older version, and if it works, that's fine. Just know if you run into bugs on a version under node v18, we will not fix it.**
 
 ## Docs
 
