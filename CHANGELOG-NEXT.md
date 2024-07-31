@@ -1,3 +1,11 @@
+# v0.5.5-next (2024-07-31)
+
+Make NPM package about 500 byte smaller.
+
+## Bug Fixes
+
+- Add tsconfig.json to .npmignore.
+
 # v0.5.4-next2 (2024-07-31)
 
 Small tweak to the v0.5.4-next changelog.
