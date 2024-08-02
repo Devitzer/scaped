@@ -1,4 +1,4 @@
-# v0.5.5 (2024-07-31)
+# v0.5.5 (2024-08-02)
 
 Scaped NPM package size has been optimized severely. ~20kb shaved off.
 
