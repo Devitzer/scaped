@@ -1,3 +1,12 @@
+# v0.5.6 (2024-08-02)
+
+Tweaks to the pre-installation script.
+
+## Changed
+
+- Changed the message that the installation script returns.
+- The pre-installation script no longer forcefully exits an installation, as this is an aggressive approach.
+
 # v0.5.5 (2024-08-02)
 
 Scaped NPM package size has been optimized severely. ~20kb shaved off.
