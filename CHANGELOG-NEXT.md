@@ -1,3 +1,12 @@
+# v0.5.6-next (2024-08-02)
+
+Tweaks to the pre-installation script.
+
+## Changed
+
+- Changed the message that the installation script returns.
+- The pre-installation script no longer forcefully exits an installation, as this is an aggressive approach.
+
 # v0.5.5-next2 (2024-07-31)
 
 Further reduction by ~10kb.
