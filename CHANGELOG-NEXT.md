@@ -1,3 +1,11 @@
+# v0.5.7-next (2024-08-02)
+
+Add a warning that is issued before the pre-installation script.
+
+## Bug Fixes
+
+- Since versions under node v12.20.0 will not work with the pre-installation script (it returns errors related to the ESM modules), we have made a pre pre-installation script warning that warns users that versions under node v12.20.0 will not work.
+
 # v0.5.6-next (2024-08-02)
 
 Tweaks to the pre-installation script.

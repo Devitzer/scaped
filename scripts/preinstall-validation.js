@@ -1,4 +1,4 @@
-// this script will return some kind of error if not run from atleast node v12.20.0. a fix is being implemented in v0.5.7
+// this script will return some kind of error if not run from atleast node v12.20.0.
 
 import { satisfies } from "semver";
 import { version } from "node:process";
